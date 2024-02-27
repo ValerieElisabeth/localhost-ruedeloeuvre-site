@@ -1,0 +1,413 @@
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+/* LOGO */
+.custom-logo {
+  width: 240px;
+  /* background-color: red; */
+}
+
+@media only screen and (max-width: 960px) {
+  .mobile-logo {
+    width: 200px;
+  }
+}
+
+.entry-header {
+  /* place sous le title des articles */
+  margin-bottom: 100px;
+}
+
+/* MENU  */
+
+.site-header .main-navigation.bottom-border.mobile {
+  /* NAV menu */
+  /* bordure top principal menu color OR parti-01  */
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+}
+
+.site-header .main-navigation.bottom-border,
+.site-header .main-navigation .container.bottom-border,
+.site-header .container.bottom-border,
+.bottom-border {
+  /* NAV menu */
+  /* /* bordure top principal menu color OR parti-02  */
+  border-top: 1.5px solid #c9af48;
+  border-bottom: 3px solid #000;
+  /* shorting Or line right and left  */
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media only screen and (max-width: 960px) {
+  .site-header .main-navigation.bottom-border.mobile {
+    border-top: 1.5px solid #c9af48;
+    border-bottom: 3px solid #000 !important;
+  }
+
+  .site-header .main-navigation.bottom-border,
+  .site-header .main-navigation .container.bottom-border,
+  .site-header .container.bottom-border,
+  .bottom-border {
+    /* NAV menu */
+    /* /* bordure top principal menu color OR parti-02  */
+
+    /* shorting Or line right and left  */
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #masthead {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.main-navigation ul.menu > li > a:hover,
+.main-navigation ul.menu > li.current-menu-item > a,
+.main-navigation ul.menu > li.current_page_item > a,
+.main-navigation ul.menu > li.current-menu-parent > a,
+.main-navigation ul.menu > li.current_page_parent > a,
+.main-navigation ul.menu > li.current-menu-ancestor > a,
+.main-navigation ul.menu > li.current_page_ancestor > a,
+.site-header .search-button a:hover {
+  color: #c9af48;
+  font-weight: 600;
+}
+
+#main-menu {
+  background-color: #9e4e4e;
+}
+
+/* SOUS MENU  */
+
+.main-navigation ul ul {
+  /* color border-top du sous menu  */
+  border-top: 3px solid #c9af48;
+
+  /* color border-bottom du sous menu  */
+  border-bottom: 3px solid #c9af48;
+  width: auto;
+}
+
+#menu-item-151 {
+  margin-bottom: 6px;
+  color: #c9af48;
+  font-weight: bold;
+}
+
+#menu-item-173 {
+  margin-top: 6px;
+  color: #c9af48;
+  font-weight: bold;
+}
+
+#menu-item-228 {
+  /* CGV  */
+  margin-top: 6px;
+}
+
+#menu-item-216 > li {
+  margin-bottom: 6px;
+  color: #c9af48;
+  font-weight: bold;
+}
+
+.sub-menu > li {
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
+}
+
+/* FOOTER DESKTOP */
+
+.widgets {
+  margin-left: 100px;
+}
+
+/* FOOTER  */
+
+.site-footer .widgets {
+  /* footer */
+  background-color: #f4f3ec;
+}
+
+.site-footer .widgets .container .padder > ul {
+  /* footer */
+  margin-left: 80px;
+}
+
+/*  MENU VERSION MOBILE */
+@media only screen and (max-width: 960px) {
+  .submenu-toggle {
+    display: block;
+    margin-right: 30px;
+  }
+
+  .site-footer .widgets .container .padder > ul {
+    /* footer */
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+}
+
+#menu-item-103 {
+  color: #c9af48;
+}
+
+/* Column Justify */
+.boxed {
+  text-align: justify;
+}
+
+/* SOUS-TITLE */
+.wp-block-separator {
+  border: 1px solid;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+}
+
+/* HOME SLIDER */
+
+.slider-container.default .pagination span {
+  /* White bullets slider */
+  border: 2px solid rgba(255, 255, 255, 0.6) !important;
+  border-radius: 9px;
+  display: inline-block;
+  height: 10px;
+  line-height: 0;
+  overflow: hidden;
+  text-indent: -100px;
+  width: 10px;
+  font-size: 0px;
+}
+
+.slider-container.default .pagination a {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 2px 7px;
+}
+
+.slider-container.default .slider .slide .overlay h2 {
+  color: #000000;
+}
+
+.slide-txt-right {
+  /* Txt du slider à right */
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  justify-content: flex-end;
+  color: #000000;
+}
+
+.slide-txt-left {
+  /* Txt du slider à gauche */
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  color: #000000;
+}
+
+.hentry:last-child {
+  margin-top: -56px;
+}
+
+.slider-container.default .slider .slide .overlay a.button,
+.header-image .overlay a.button {
+  /* button : noir du slider version desktop */
+  text-transform: uppercase;
+  font-size: 15px;
+  line-height: 9px;
+  text-align: center;
+  font-weight: 400;
+  height: 40px;
+  width: 100%;
+  width: auto;
+  display: inline-block;
+  padding: 16px 30px 17px 30px;
+  text-decoration: none;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  margin: 95px 0 40px 0;
+}
+
+@media only screen and (max-width: 960px) {
+  .slider-container.default .slider .slide .overlay a.button {
+    /* button : noir du slider */
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 10px;
+    text-align: center;
+    font-weight: 400;
+    height: 40px;
+    width: 100%;
+    width: auto;
+    display: inline-block;
+    padding: 16px 25px 17px 25px;
+    margin: 90px 0 0px 0px;
+  }
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* / / / / / / / / /  R E S P O N S I V E  / / / / / / / / */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/*
+------------------------------------------------------------ 
+                        VERSION TABLET 
+------------------------------------------------------------
+*/
+
+@media screen and (min-width: 490px) and (max-width: 768px) {
+  /* Si la taille est comprise entre 480px et 768px */
+
+  .slider-container.default .slider .slide .overlay a.button {
+    /* button : noir du slider */
+    font-size: 12px;
+    line-height: 16px;
+    height: auto;
+    display: inline-block;
+    padding: 8px 10px 8px 10px;
+    margin: 60px;
+  }
+
+  .slider-container.default .prev {
+    /* precedent button */
+    position: absolute;
+    top: 50%;
+    height: 30px;
+    width: 30px;
+    line-height: 50px;
+    margin: -24px 0 0 0;
+    text-align: center;
+    font-size: 27px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 9;
+    transform: scale(0.7);
+    transition: all 0.2s ease 0s;
+    background-size: 30px;
+  }
+
+  .slider-container.default .next {
+    position: absolute;
+    top: 50%;
+    height: 30px;
+    width: 30px;
+    line-height: 50px;
+    margin: -24px 0 0 0;
+    text-align: center;
+    font-size: 27px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 9;
+    transform: scale(0.7);
+    transition: all 0.2s ease 0s;
+    background-size: 30px;
+  }
+
+  .slider-container.default .pagination span {
+    /* White bullets slider */
+    display: none;
+  }
+
+  .site-header .main-navigation.bottom-border {
+    /* border TOP color OR version tablet */
+    border-top: 1px solid #c9af48;
+    border-bottom: 3px solid #00eaff;
+  }
+
+  .site-header .main-navigation.bottom-border.mobile {
+    border-top: 1.5px solid #c9af48;
+  }
+}
+
+/*
+------------------------------------------------------------ 
+                      VERSION MOBILE
+------------------------------------------------------------
+*/
+
+@media screen and (max-width: 480px) {
+  /* Si smaller ou equal: 480px */
+
+  .slider-container.default .slider .slide .overlay a.button {
+    /* Black button slider : "see more" */
+    font-size: 12px;
+    line-height: 16px;
+    height: auto;
+    padding: 3px 9px 3px 8px;
+    margin: 17px;
+  }
+}
+
+.slider-container.default .pagination span {
+  /* White slider bullets  */
+  display: none;
+}
+
+.site-header .main-navigation.bottom-border.mobile {
+  border-top: 1.5px solid #c9af48;
+}
+
+.slider-container.default .prev {
+  /* taille du precedent button */
+  height: 30px;
+  width: 30px;
+  background-size: 30px;
+  margin: -10px 0 0 0;
+}
+
+.slider-container.default .next {
+  /* next button */
+  height: 30px;
+  width: 30px;
+  background-size: 30px;
+  margin: -10px 0 0 0;
+}
+
+/*
+------------------------------------------------------------ 
+                    MINIMAL SCREEN MOBILE
+------------------------------------------------------------
+*/
+
+@media screen and (max-width: 400px) {
+  /* Si smaller ou equal: 400px */
+
+  .slider-container.default .slider .slide .overlay a.button {
+    /* Black button slider : "see more" */
+    display: none;
+  }
+
+  .slider-container.default .pagination span {
+    /* White bullets slider */
+    display: none;
+  }
+
+  .slider-container.default .prev {
+    /* previous button */
+    transform: scale(1);
+    top: 50%;
+    height: 20px;
+    width: 20px;
+    margin: -10px 0 0 0;
+    text-align: center;
+    font-size: 27px;
+    background-size: 20px;
+  }
+
+  .slider-container.default .next {
+    /* next button */
+    transform: scale(1);
+    top: 50%;
+    height: 20px;
+    width: 20px;
+    margin: -10px 0 0 0;
+    text-align: center;
+    font-size: 27px;
+    background-size: 20px;
+  }
+}

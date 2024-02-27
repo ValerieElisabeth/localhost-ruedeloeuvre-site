@@ -1,0 +1,459 @@
+/*
+/////////////////////////////////////////////////////////
+///////////////////// GLOBAL CSS ////////////////////////
+/////////////////////////////////////////////////////////
+*/
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+.breadcrumbs {
+  /* fil dAriane */
+  display: none;
+}
+
+.caroufredsel_wrapper {
+  /* text-align: start;
+  float: none;
+  position: relative;
+  inset: auto;
+  z-index: auto;
+  width: 506px;
+  height: 214.283px;
+  margin: 0px; */
+  overflow: hidden;
+}
+
+/*
+///////////////////// GALLERY PHOTOS /////////////////
+*/
+
+.foogallery.fg-masonry {
+  /* margin-top Gallery */
+  margin-top: -79px;
+}
+
+/*
+/////////////////////////////////////////////////////////
+///////////////////////// LOGO //////////////////////////
+/////////////////////////////////////////////////////////
+*/
+
+.custom-logo {
+  /* taille du logo */
+  width: 240px;
+  /* background-color: red; */
+}
+
+.entry-header {
+  /* place sous le title des articles */
+  margin-bottom: 100px;
+}
+
+/*
+/////////////////////////////////////////////////////////
+///////////////////////// MENU //////////////////////////
+/////////////////////////////////////////////////////////
+*/
+
+/* NAV MENU parti-01 */
+
+.site-header .main-navigation.bottom-border.mobile {
+  /* bordure top principal menu color OR */
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+}
+
+/* NAV MENU parti-02 */
+.site-header .main-navigation.bottom-border,
+.site-header .main-navigation .container.bottom-border,
+.site-header .container.bottom-border,
+.bottom-border {
+  /* /* bordure top principal menu color OR */
+  border-top: 1.5px solid #c9af48;
+  border-bottom: 3px solid #000;
+  /* shorting Or line right and left  */
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* NAV MENU TITLES */
+.main-navigation ul.menu > li > a:hover,
+.main-navigation ul.menu > li.current-menu-item > a,
+.main-navigation ul.menu > li.current_page_item > a,
+.main-navigation ul.menu > li.current-menu-parent > a,
+.main-navigation ul.menu > li.current_page_parent > a,
+.main-navigation ul.menu > li.current-menu-ancestor > a,
+.main-navigation ul.menu > li.current_page_ancestor > a {
+  color: #c9af48;
+  font-weight: 600;
+}
+
+/* SOUS MENU  */
+
+.main-navigation ul ul {
+  /* color border-top du sous menu  */
+  border-top: 3px solid #c9af48;
+
+  /* color border-bottom du sous menu  */
+  border-bottom: 3px solid #c9af48;
+  width: auto;
+}
+
+.main-navigation ul ul a {
+  /* space entre les sous menus  */
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  font-weight: 300;
+  text-transform: none;
+  font-size: 15px;
+  line-height: 20px;
+  padding: 4px 10px 4px 15px;
+  text-align: left;
+  min-width: 190px;
+  color: #000000 !important;
+}
+
+.main-navigation ul ul a:hover {
+  /* space entre les sous menus au :hover */
+
+  color: rgba(178, 144, 9, 0.719) !important;
+  font-weight: 400;
+}
+
+/*
+/////////////////////////////////////////////////////////
+///////////////////////// FOOTER ////////////////////////
+/////////////////////////////////////////////////////////
+*/
+
+.widgets {
+  /* footer version desktop */
+  margin-left: 100px;
+}
+
+.site-footer .widgets {
+  /* footer background */
+  background-color: #f4f3ec;
+}
+
+.site-footer .widgets .container .padder > ul {
+  /* footer margin left */
+  margin-left: 80px;
+}
+
+/*
+/////////////////////////////////////////////////////////
+////////////////// MISE EN PAGE GENERAL /////////////////
+/////////////////////////////////////////////////////////
+*/
+
+.boxed {
+  /* Column Justify */
+  text-align: justify;
+}
+
+.wp-block-separator {
+  /* sub-title */
+  border: 1px solid;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+}
+
+/*
+/////////////////////////////////////////////////////////
+/////////////////////// HOME SLIDER /////////////////////
+/////////////////////////////////////////////////////////
+*/
+
+.slider-container.default .prev,
+.slider-container.default .next {
+  /* Button custom slider */
+  position: absolute;
+  top: 50%;
+  height: 49px;
+  width: 49px;
+  line-height: 50px;
+  margin: -24px 0 0 0;
+  text-align: center;
+  font-size: 27px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 9;
+  transform: scale(0.7);
+  transition: all 0.2s ease 0s;
+}
+
+.slider-container.default .pagination span {
+  /* White contour bullets slider */
+  border: 2px solid rgba(223, 188, 33, 1) !important;
+  border-radius: 9px;
+  display: inline-block;
+  height: 13px;
+  width: 13px;
+  line-height: 0;
+  overflow: hidden;
+  text-indent: -100px;
+  font-size: 0px;
+}
+
+.slider-container.default,
+.pagination a.selected span {
+  /* background-color bullets slider */
+  background-color: rgba(201, 175, 72, 0.5) !important;
+}
+
+.slider-container.default .pagination a {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 2px 7px;
+}
+
+.slider-container.default .slider .slide .overlay h2 {
+  /* h2 Slider Title */
+  color: #000000;
+}
+
+.slide-txt-right {
+  /* Txt du slider à right */
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  justify-content: flex-end;
+  color: #000000;
+}
+
+.slide-txt-left {
+  /* Txt du slider à gauche */
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  color: #000000;
+}
+
+.hentry:last-child {
+  /* Slider margin top under the black line */
+  margin-top: -56px;
+}
+
+.slider-container.default .slider .slide .overlay a.button,
+.header-image .overlay a.button {
+  /* Slider black button version desktop */
+  text-transform: uppercase;
+  font-size: 15px;
+  text-align: center;
+  line-height: 10px;
+  font-weight: 400;
+  height: 40px;
+  padding: 16px 30px 17px 30px;
+  text-decoration: none;
+  margin: 95px 0 40px 0;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* / / / / / / / / /  R E S P O N S I V E  / / / / / / / / */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/*
+
+------------------------------------------------------------ 
+                  VERSION MEDIUM DESKTOP
+------------------------------------------------------------
+*/
+
+@media only screen and (max-width: 960px) {
+  /* Si smaller ou equal: 960px */
+
+  .mobile-logo {
+    /* mobile size logo */
+    width: 200px;
+  }
+
+  .site-header .main-navigation.bottom-border.mobile,
+  .site-header .main-navigation.bottom-border,
+  .site-header .main-navigation .container.bottom-border,
+  .site-header .container.bottom-border,
+  .bottom-border {
+    /* NAV MENU */
+
+    /* /* bordure top principal menu color OR parti-02  */
+    border-top: 1.5px solid #c9af48;
+    border-bottom: 3px solid #000 !important;
+    /* shorting Or line right and left  */
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #masthead {
+    /* nav menu margin liners  */
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .slider-container.default .slider .slide .overlay a.button {
+    /* button : noir du slider */
+    text-transform: uppercase;
+    line-height: 10px;
+    width: auto;
+    display: inline-block;
+  }
+
+  .submenu-toggle {
+    display: block;
+    margin-right: 30px;
+  }
+
+  .site-footer .widgets .container .padder > ul {
+    /* footer margin */
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+
+  .slider-container.default .pagination span {
+    /* White contour bullets slider */
+    border: 2px solid rgba(223, 188, 33, 1) !important;
+    border-radius: 9px;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    line-height: 0;
+    overflow: hidden;
+    text-indent: -100px;
+    font-size: 0px;
+  }
+}
+
+/*
+------------------------------------------------------------ 
+                        VERSION TABLET 
+------------------------------------------------------------
+*/
+
+@media screen and (min-width: 490px) and (max-width: 768px) {
+  /* Si la taille est comprise entre 480px et 768px */
+
+  .slider-container.default .slider .slide .overlay a.button {
+    /* button : noir du slider */
+    font-size: 14px;
+    text-align: center;
+    height: auto;
+    padding: 10px;
+    margin: 60px;
+  }
+
+  .slider-container.default .prev {
+    /* precedent button */
+    position: absolute;
+    top: 50%;
+    height: 35px;
+    width: 35px;
+    line-height: 50px;
+    margin: -24px 0 0 0;
+    text-align: center;
+    font-size: 27px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 9;
+    transform: scale(0.7);
+    transition: all 0.2s ease 0s;
+    background-size: 35px;
+  }
+
+  .slider-container.default .next {
+    position: absolute;
+    top: 50%;
+    height: 35px;
+    width: 35px;
+    line-height: 50px;
+    margin: -24px 0 0 0;
+    text-align: center;
+    font-size: 27px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 9;
+    transform: scale(0.7);
+    transition: all 0.2s ease 0s;
+    background-size: 35px;
+  }
+
+  .slider-container.default .pagination span {
+    /* White bullets slider */
+    display: none;
+  }
+
+  .site-header .main-navigation.bottom-border {
+    /* border TOP color OR version tablet */
+    border-top: 1px solid #c9af48;
+    border-bottom: 3px solid #00eaff;
+  }
+
+  .site-header .main-navigation.bottom-border.mobile {
+    border-top: 1.5px solid #c9af48;
+  }
+}
+
+/*
+------------------------------------------------------------ 
+                      VERSION MOBILE
+------------------------------------------------------------
+*/
+
+@media screen and (max-width: 489px) {
+  /* Si smaller ou equal: 489px */
+
+  .slider-container.default .slider .slide .overlay a.button {
+    /* Black button slider : "see more" */
+    font-size: 12px;
+    height: auto;
+    padding: 5px 10px 5px 10px;
+    margin: 20px;
+  }
+
+  .slider-container.default .pagination span {
+    /* White bullets slider */
+    display: none;
+  }
+
+  .site-header .main-navigation.bottom-border.mobile {
+    border-top: 1.5px solid #c9af48;
+  }
+
+  .slider-container.default .prev,
+  .slider-container.default .next {
+    /* taille du precedent button */
+    /* next button */
+    height: 30px;
+    width: 30px;
+    background-size: 30px;
+    margin: -10px 0 0 0;
+  }
+}
+
+/*
+------------------------------------------------------------ 
+                    MINIMAL SCREEN MOBILE
+------------------------------------------------------------
+*/
+
+@media screen and (max-width: 479px) {
+  /* Si smaller ou equal: 479px */
+
+  .slider-container.default .next,
+  .slider-container.default .prev {
+    /* next button */
+    /* precedent button */
+    height: 25px;
+    width: 25px;
+    margin: -10px 0 0 0;
+    background-size: 25px;
+  }
+
+  .slide-txt-left,
+  .slide-txt-right,
+  .slider-container.default .slider .slide .overlay h2,
+  .slider-container.default .slider .slide .overlay a.button {
+    /* All slider txt */
+    /* Black button slider : "see more" */
+    display: none;
+  }
+}
