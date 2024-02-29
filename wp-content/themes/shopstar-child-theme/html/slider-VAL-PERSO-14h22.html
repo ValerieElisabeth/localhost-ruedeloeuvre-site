@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div id="sliderVal">
+      <div class="homeSlide">
+        <img
+          src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/001.jpg"
+          alt="Image 1"
+        />
+        <h2>Titre 1</h2>
+        <h3>Sous-titre 1</h3>
+        <button>SHOP NOW</button>
+      </div>
+      <div class="homeSlide">
+        <img
+          src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/002.jpg"
+          alt="Image 2"
+        />
+        <h2>Titre 2</h2>
+        <h3>Sous-titre 2</h3>
+        <button>SHOP NOW</button>
+      </div>
+      <div class="homeSlide">
+        <img
+          src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/003.jpg"
+          alt="Image 3"
+        />
+        <h2>Titre 3</h2>
+        <h3>Sous-titre 3</h3>
+        <button>SHOP NOW</button>
+      </div>
+      <div class="homeSlide">
+        <img
+          src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/004.jpg"
+          alt="Image 3"
+        />
+        <h2>Titre 3</h2>
+        <h3>Sous-titre 3</h3>
+        <button>SHOP NOW</button>
+      </div>
+      <div class="homeSlide">
+        <img
+          src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/005.jpg"
+          alt="Image 3"
+        />
+        <h2>Titre 3</h2>
+        <h3>Sous-titre 3</h3>
+        <button>SHOP NOW</button>
+      </div>
+      <div class="homeSlide">
+        <img
+          src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/006.jpg"
+          alt="Image 3"
+        />
+        <h2>Titre 3</h2>
+        <h3>Sous-titre 3</h3>
+        <button>SHOP NOW</button>
+      </div>
+      <div class="homeSlide">
+        <img
+          src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/007.jpg"
+          alt="Image 3"
+        />
+        <h2>Titre 3</h2>
+        <h3>Sous-titre 3</h3>
+        <button>SHOP NOW</button>
+      </div>
+      <div class="homeSlide">
+        <img
+          src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/008.jpg"
+          alt="Image 3"
+        />
+        <h2>Titre 3</h2>
+        <h3>Sous-titre 3</h3>
+        <button>SHOP NOW</button>
+      </div>
+      <div class="homeSlide">
+        <img
+          src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/009.jpg"
+          alt="Image 3"
+        />
+        <h2>Titre 3</h2>
+        <h3>Sous-titre 3</h3>
+        <button>SHOP NOW</button>
+      </div>
+      <button class="arrow" id="prev"><</button>
+      <button class="arrow" id="next">></button>
+      <ul class="paginationVal"></ul>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const slides = document.querySelectorAll('.homeSlide');
+        const prev = document.querySelector('#prev');
+        const next = document.querySelector('#next');
+        const paginationContainer = document.querySelector('.paginationVal');
+        let index = 0;
+        let autoPlayInterval;
+
+        function showSlide() {
+          for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+          }
+          slides[index].style.display = 'block';
+        }
+
+        function startAutoPlay() {
+          autoPlayInterval = setInterval(() => {
+            nextSlide();
+            updatePagination();
+          }, 6000);
+        }
+
+        function stopAutoPlay() {
+          clearInterval(autoPlayInterval);
+        }
+
+        function nextSlide() {
+          index++;
+          if (index > slides.length - 1) {
+            index = 0;
+          }
+          showSlide();
+        }
+
+        function prevSlide() {
+          index--;
+          if (index < 0) {
+            index = slides.length - 1;
+          }
+          showSlide();
+        }
+
+        next.addEventListener('click', function () {
+          stopAutoPlay();
+          nextSlide();
+          updatePagination();
+          startAutoPlay();
+        });
+
+        prev.addEventListener('click', function () {
+          stopAutoPlay();
+          prevSlide();
+          updatePagination();
+          startAutoPlay();
+        });
+
+        function goToSlide(e) {
+          stopAutoPlay();
+          index = parseInt(e.target.dataset.index);
+          showSlide();
+          updatePagination(); // Ajout : mettre à jour les bulles après le clic de l'utilisateur
+          startAutoPlay();
+        }
+
+        function createPagination() {
+          for (let i = 0; i < slides.length; i++) {
+            const dot = document.createElement('li');
+            dot.classList.add('dot');
+            dot.dataset.index = i;
+            paginationContainer.appendChild(dot);
+            dot.addEventListener('click', goToSlide);
+          }
+        }
+
+        createPagination();
+
+        function updatePagination() {
+          const dots = document.querySelectorAll('.paginationVal .dot');
+          for (let i = 0; i < dots.length; i++) {
+            dots[i].classList.remove('active');
+          }
+          dots[index].classList.add('active');
+        }
+
+        // Ajout : redémarrer l'autoplay après que l'utilisateur a cliqué sur une bulle
+        function restartAutoPlay() {
+          stopAutoPlay();
+          startAutoPlay();
+        }
+
+        startAutoPlay();
+      });
+    </script>
+
+    <style>
+      #sliderVal {
+        width: 1140px;
+        height: 420px;
+        position: relative;
+        overflow: hidden;
+        background-color: aqua;
+      }
+
+      .homeSlide {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: bisque;
+      }
+
+      .homeSlide:first-child {
+        display: block;
+      }
+
+      .homeSlide img {
+        width: 1140px;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .homeSlide h2 {
+        font-size: 48px;
+        color: white;
+        position: absolute;
+        top: 20%;
+        left: 10%;
+      }
+
+      .homeSlide h3 {
+        font-size: 32px;
+        color: white;
+        position: absolute;
+        top: 30%;
+        left: 10%;
+      }
+
+      .homeSlide button {
+        font-size: 20px;
+        color: white;
+        border: 1px solid white;
+        padding: 10px 20px;
+        position: absolute;
+        bottom: 20%;
+        left: 45%;
+        bottom: 50px;
+        background: black;
+      }
+
+      .homeSlide button:hover {
+        opacity: 0.8;
+      }
+
+      .arrow {
+        color: white;
+        border: 1px solid white;
+        font-size: 20px;
+        padding: 10px 10px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        display: none;
+      }
+
+      .arrow:hover {
+        opacity: 0.8;
+      }
+
+      #prev {
+        left: 20px;
+      }
+
+      #next {
+        right: 20px;
+      }
+
+      .paginationVal {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 5px;
+        right: 10px; /* Ajuste la position à droite */
+      }
+
+      .dot {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        margin: 5px;
+        cursor: pointer;
+        border: 2px solid orange; /* Bordure orange */
+      }
+
+      .dot.active {
+        background-color: orange; /* Change this line to set the color for the active dot */
+        border: 2px solid white; /* Adjust the border color for the active dot */
+      }
+
+      #sliderVal:hover .arrow {
+        display: block;
+      }
+    </style>
+  </body>
+</html>

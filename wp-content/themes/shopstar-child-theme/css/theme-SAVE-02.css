@@ -10,7 +10,7 @@ body {
 
 .breadcrumbs {
   /* fil dAriane */
-  /* display: none; */
+  display: none;
 }
 
 /*
@@ -19,7 +19,7 @@ body {
 
 .foogallery.fg-masonry {
   /* margin-top Gallery */
-  margin-top: -24px;
+  margin-top: -79px;
 }
 
 /*
@@ -36,7 +36,7 @@ body {
 
 .entry-header {
   /* place sous le title des articles */
-  /* margin-bottom: 100px; */
+  margin-bottom: 100px;
 }
 
 /*
@@ -155,6 +155,43 @@ body {
 /////////////////////// HOME SLIDER /////////////////////
 /////////////////////////////////////////////////////////
 */
+
+.caroufredsel_wrapper {
+  text-align: start;
+  float: none;
+  position: relative;
+  inset: auto;
+  z-index: auto;
+  width: 1140px;
+  height: 405px;
+  margin: 0px;
+  overflow: hidden;
+}
+
+.slider {
+  text-align: left;
+  float: none;
+  position: absolute;
+  inset: 0px auto auto 0px;
+  width: 1140px;
+  height: 405px;
+  margin: 0px;
+}
+
+.slide img {
+  width: 1140px;
+}
+
+.wp-post-image {
+  width: 1440px;
+  height: 600px;
+  max-width: 1440px;
+}
+
+.slide {
+  width: 1140px;
+}
+
 .slider-container.default .prev,
 .slider-container.default .next {
   /* Button custom slider */
@@ -221,7 +258,21 @@ body {
 
 .hentry:last-child {
   /* Slider margin top under the black line */
-  /* margin-top: -56px; */
+  margin-top: -56px;
+}
+
+.slider-container.default .slider .slide .overlay a.button,
+.header-image .overlay a.button {
+  /* Slider black button version desktop */
+  text-transform: uppercase;
+  font-size: 15px;
+  text-align: center;
+  line-height: 10px;
+  font-weight: 400;
+  height: 40px;
+  padding: 16px 30px 17px 30px;
+  text-decoration: none;
+  margin: 95px 0 40px 0;
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
