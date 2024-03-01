@@ -1,8 +1,5 @@
-<head>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-</head>
 <div id="sliderVal">
-  <div class="homeSlide">
+  <div class="homeSlide active">
     <img
       src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/001.jpg"
       alt="Image 1"
@@ -120,20 +117,21 @@
     const prev = document.querySelector('#prev');
     const next = document.querySelector('#next');
     const paginationContainer = document.querySelector('.paginationVal');
-    $('.homeSlide:first-child').addClass('active');
     let index = 0;
     let autoPlayInterval;
 
     function showSlide() {
-      $('.homeSlide').removeClass('active');
-      $('.homeSlide').eq(index).addClass('active');
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
+      }
+      slides[index].classList.add('active');
     }
 
     function startAutoPlay() {
       autoPlayInterval = setInterval(() => {
         nextSlide();
         updatePagination();
-      }, 2000);
+      }, 2500);
     }
 
     function stopAutoPlay() {
@@ -146,6 +144,7 @@
         index = 0;
       }
       showSlide();
+      updatePagination();
     }
 
     function prevSlide() {
@@ -154,6 +153,7 @@
         index = slides.length - 1;
       }
       showSlide();
+      updatePagination();
     }
 
     next.addEventListener('click', function () {
@@ -174,7 +174,7 @@
       stopAutoPlay();
       index = parseInt(e.target.dataset.index);
       showSlide();
-      updatePagination();
+      updatePagination(); // Ajout : mettre à jour les bulles après le clic de l'utilisateur
       startAutoPlay();
     }
 
@@ -192,10 +192,13 @@
 
     function updatePagination() {
       const dots = document.querySelectorAll('.paginationVal .dot');
-      dots.forEach((dot) => dot.classList.remove('active'));
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('active');
+      }
       dots[index].classList.add('active');
     }
 
+    // Ajout : redémarrer l'autoplay après que l'utilisateur a cliqué sur une bulle
     function restartAutoPlay() {
       stopAutoPlay();
       startAutoPlay();
@@ -228,11 +231,8 @@
   .homeSlide.active {
     opacity: 1;
   }
-
   .homeSlide:first-child {
     display: block;
-    opacity: 1;
-    transition: none; /* Désactive la transition pour la première diapositive */
   }
 
   .homeSlide img {
