@@ -123,6 +123,7 @@
     function showSlide() {
       for (let i = 0; i < slides.length; i++) {
         slides[i].classList.remove('active');
+        slides[i].style.transform = `translateX(${100 * (i - index)}%)`;
       }
       slides[index].classList.add('active');
     }
@@ -174,7 +175,7 @@
       stopAutoPlay();
       index = parseInt(e.target.dataset.index);
       showSlide();
-      updatePagination(); // Ajout : mettre à jour les bulles après le clic de l'utilisateur
+      updatePagination();
       startAutoPlay();
     }
 
@@ -198,15 +199,38 @@
       dots[index].classList.add('active');
     }
 
-    // Ajout : redémarrer l'autoplay après que l'utilisateur a cliqué sur une bulle
     function restartAutoPlay() {
       stopAutoPlay();
       startAutoPlay();
     }
 
+    // Ajout : boucler à l'infini
+    function checkAndResetIndex() {
+      if (index >= slides.length) {
+        index = 0;
+      } else if (index < 0) {
+        index = slides.length - 1;
+      }
+    }
+
+    function nextSlideInfinite() {
+      index++;
+      checkAndResetIndex();
+      showSlide();
+      updatePagination();
+    }
+
+    function prevSlideInfinite() {
+      index--;
+      checkAndResetIndex();
+      showSlide();
+      updatePagination();
+    }
+
     startAutoPlay();
   });
 </script>
+
 
 <style>
   #sliderVal {
@@ -214,7 +238,7 @@
     height: 420px;
     position: relative;
     overflow: hidden;
-    background-color: aqua;
+    background-color: rgb(255, 255, 255);
   }
 
   .homeSlide {
@@ -224,13 +248,17 @@
     top: 0;
     left: 0;
     background-color: bisque;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
   }
 
   .homeSlide.active {
     opacity: 1;
   }
+
+  .homeSlide:not(.active) {
+    transform: translateX(100%);
+  }
+
   .homeSlide:first-child {
     display: block;
   }
