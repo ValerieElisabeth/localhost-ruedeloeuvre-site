@@ -1,0 +1,374 @@
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<div id="sliderVal">
+  <div class="homeSlide">
+    <img
+      src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/001.jpg"
+      alt="Image 1"
+    />
+
+    <div class="block-txt rightTxt">
+      <h2>Révéler</h2>
+      <p>l'Oeuvre de la vie</p>
+    </div>
+    <button>voir plus</button>
+  </div>
+  <div class="homeSlide">
+    <img
+      src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/002.jpg"
+      alt="Image 2"
+    />
+
+    <div class="block-txt rightTxt">
+      <h2>Révéler</h2>
+      <p>la magie d'un instant</p>
+    </div>
+    <button>voir plus</button>
+  </div>
+  <div class="homeSlide">
+    <img
+      src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/003.jpg"
+      alt="Image 3"
+    />
+    <div class="block-txt rightTxt">
+      <h2>Inspirer</h2>
+      <p>une envlolée d'Amour</p>
+    </div>
+    <button>voir plus</button>
+  </div>
+  <div class="homeSlide">
+    <img
+      src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/004.jpg"
+      alt="Image 4"
+    />
+    <div class="block-txt rightTxt">
+      <h2>Saisir</h2>
+      <p>les premiers instants</p>
+    </div>
+    <button>voir plus</button>
+  </div>
+  <div class="homeSlide">
+    <img
+      src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/005.jpg"
+      alt="Image 5"
+    />
+
+    <div class="block-txt rightTxt">
+      <h2>Réveler</h2>
+      <p>la joie de votre personnalité</p>
+    </div>
+    <button>voir plus</button>
+  </div>
+  <div class="homeSlide">
+    <img
+      src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/006.jpg"
+      alt="Image 6"
+    />
+
+    <div class="block-txt rightTxt">
+      <h2>Réveler</h2>
+      <p>la joie de votre personnalité</p>
+    </div>
+    <button>voir plus</button>
+  </div>
+  <div class="homeSlide">
+    <img
+      src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/007.jpg"
+      alt="Image 7"
+    />
+
+    <div class="block-txt rightTxt">
+      <h2>Réveler</h2>
+      <p>la joie de votre personnalité</p>
+    </div>
+    <button>voir plus</button>
+  </div>
+  <div class="homeSlide">
+    <img
+      src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/008.jpg"
+      alt="Image 8"
+    />
+
+    <div class="block-txt leftTxt">
+      <h2>Saisir</h2>
+      <p>un moment de complicité</p>
+    </div>
+    <button>voir plus</button>
+  </div>
+  <div class="homeSlide">
+    <img
+      src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/009.jpg"
+      alt="Image 9"
+    />
+    <div class="block-txt leftTxt">
+      <h2>Révéler</h2>
+      <p>l'éssentiel de la féminité</p>
+    </div>
+    <button>voir plus</button>
+  </div>
+
+  <button class="arrow" id="prev"></button>
+  <button class="arrow" id="next"></button>
+
+  <ul class="paginationVal"></ul>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.homeSlide');
+    const prev = document.querySelector('#prev');
+    const next = document.querySelector('#next');
+    const paginationContainer = document.querySelector('.paginationVal');
+    $('.homeSlide:first-child').addClass('active');
+    let index = 0;
+    let autoPlayInterval;
+
+    function showSlide() {
+      $('.homeSlide').removeClass('active');
+      $('.homeSlide').eq(index).addClass('active');
+    }
+
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(() => {
+        nextSlide();
+        updatePagination();
+      }, 2000);
+    }
+
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+
+    function nextSlide() {
+      index++;
+      if (index > slides.length - 1) {
+        index = 0;
+      }
+      showSlide();
+    }
+
+    function prevSlide() {
+      index--;
+      if (index < 0) {
+        index = slides.length - 1;
+      }
+      showSlide();
+    }
+
+    next.addEventListener('click', function () {
+      stopAutoPlay();
+      nextSlide();
+      updatePagination();
+      startAutoPlay();
+    });
+
+    prev.addEventListener('click', function () {
+      stopAutoPlay();
+      prevSlide();
+      updatePagination();
+      startAutoPlay();
+    });
+
+    function goToSlide(e) {
+      stopAutoPlay();
+      index = parseInt(e.target.dataset.index);
+      showSlide();
+      updatePagination();
+      startAutoPlay();
+    }
+
+    function createPagination() {
+      for (let i = 0; i < slides.length; i++) {
+        const dot = document.createElement('li');
+        dot.classList.add('dot');
+        dot.dataset.index = i;
+        paginationContainer.appendChild(dot);
+        dot.addEventListener('click', goToSlide);
+      }
+    }
+
+    createPagination();
+
+    function updatePagination() {
+      const dots = document.querySelectorAll('.paginationVal .dot');
+      dots.forEach((dot) => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+    }
+
+    function restartAutoPlay() {
+      stopAutoPlay();
+      startAutoPlay();
+    }
+
+    startAutoPlay();
+  });
+</script>
+
+<style>
+  #sliderVal {
+    width: 1140px;
+    height: 420px;
+    position: relative;
+    overflow: hidden;
+    background-color: aqua;
+  }
+
+  .homeSlide {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: bisque;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .homeSlide.active {
+    opacity: 1;
+  }
+
+  .homeSlide:first-child {
+    display: block;
+    opacity: 1;
+    transition: none; /* Désactive la transition pour la première diapositive */
+  }
+
+  .homeSlide img {
+    width: 1140px;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .homeSlide button {
+    /* Button SHOP NOW */
+    font-size: 15px;
+    font-weight: 300;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 40px 8px 40px;
+    position: absolute;
+    left: 45%;
+    bottom: 45px;
+    background: black;
+  }
+
+  .homeSlide button:hover {
+    opacity: 0.8;
+  }
+
+  .block-txt,
+  .rightTxt {
+    font-family: 'Raleway', sans-serif;
+    position: absolute;
+    color: black;
+    top: 35%;
+    right: 10%;
+  }
+
+  .rightTxt h2 {
+    font-size: 45px;
+    font-weight: 500;
+    text-align: end;
+    margin-bottom: -10px;
+  }
+
+  .rightTxt p {
+    font-size: 30px;
+    font-weight: 300;
+    text-align: end;
+  }
+
+  .block-txt,
+  .leftTxt {
+    font-family: 'Raleway', sans-serif;
+    position: absolute;
+    color: black;
+    top: 35%;
+    left: 10%;
+  }
+
+  .leftTxt h2 {
+    font-size: 45px;
+    font-weight: 500;
+    margin-bottom: -10px;
+  }
+
+  .leftTxt p {
+    font-size: 30px;
+    font-weight: 300;
+  }
+
+  .block-txt > button {
+    /* Bouton SHOP NOW */
+    font-size: 15px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 40px 8px 40px;
+    position: absolute;
+    left: 45%;
+    bottom: 45px;
+    background: black;
+  }
+
+  .rightVal button:hover {
+    opacity: 0.8;
+  }
+
+  .arrow {
+    /* Button position next/prev */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 49px;
+    height: 49px;
+    display: none;
+  }
+
+  .arrow:hover {
+    opacity: 0.5;
+  }
+
+  #prev {
+    left: 20px;
+    background-image: url('http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/slider-control-prev.png');
+    background-color: black;
+  }
+
+  #next {
+    right: 20px;
+    background-image: url('http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/slider-control-next.png');
+    background-color: black;
+  }
+
+  .paginationVal {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 5px;
+    right: 10px; /* Ajuste la position à droite */
+  }
+
+  .dot {
+    /* pagination bulles */
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 5px;
+    border: 2px solid #c9af48;
+  }
+
+  .dot.active {
+    background-color: #c9af48;
+  }
+
+  #sliderVal:hover .arrow {
+    display: block;
+  }
+</style>
