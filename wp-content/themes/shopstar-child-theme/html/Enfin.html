@@ -9,25 +9,25 @@
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/001.jpg"
         alt="Image 1"
       />
-
       <div class="block-txt rightTxt">
         <h2>Révéler</h2>
-        <p>l'Oeuvre de la vie</p>
+        <p>L'Œuvre de la vie</p>
+        <button>voir plus</button>
       </div>
-      <button>voir plus</button>
     </div>
+
     <div class="homeSlide">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/002.jpg"
         alt="Image 2"
       />
-
       <div class="block-txt rightTxt">
         <h2>Révéler</h2>
         <p>la magie d'un instant</p>
+        <button>voir plus</button>
       </div>
-      <button>voir plus</button>
     </div>
+
     <div class="homeSlide">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/003.jpg"
@@ -36,8 +36,8 @@
       <div class="block-txt rightTxt">
         <h2>Inspirer</h2>
         <p>une envlolée d'Amour</p>
+        <button>voir plus</button>
       </div>
-      <button>voir plus</button>
     </div>
     <div class="homeSlide">
       <img
@@ -47,67 +47,63 @@
       <div class="block-txt rightTxt">
         <h2>Saisir</h2>
         <p>les premiers instants</p>
+        <button>voir plus</button>
       </div>
-      <button>voir plus</button>
     </div>
     <div class="homeSlide">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/005.jpg"
         alt="Image 5"
       />
-
       <div class="block-txt rightTxt">
-        <h2>Réveler</h2>
-        <p>la joie de votre personnalité</p>
+        <h2>Révéler</h2>
+        <p>L'Œuvre de la vie</p>
+        <button>voir plus</button>
       </div>
-      <button>voir plus</button>
     </div>
     <div class="homeSlide">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/006.jpg"
         alt="Image 6"
       />
-
       <div class="block-txt rightTxt">
         <h2>Réveler</h2>
         <p>la joie de votre personnalité</p>
+        <button>voir plus</button>
       </div>
-      <button>voir plus</button>
     </div>
     <div class="homeSlide">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/007.jpg"
         alt="Image 7"
       />
-
       <div class="block-txt rightTxt">
         <h2>Réveler</h2>
         <p>la joie de votre personnalité</p>
+        <button>voir plus</button>
       </div>
-      <button>voir plus</button>
     </div>
     <div class="homeSlide">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/008.jpg"
         alt="Image 8"
       />
-
-      <div class="block-txt leftTxt">
+      <div class="block-txt">
         <h2>Saisir</h2>
         <p>un moment de complicité</p>
+        <button>voir plus</button>
       </div>
-      <button>voir plus</button>
     </div>
     <div class="homeSlide">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/009.jpg"
         alt="Image 9"
       />
-      <div class="block-txt leftTxt">
+      <div class="block-txt">
         <h2>Révéler</h2>
         <p>l'éssentiel de la féminité</p>
+        <button>voir plus</button>
       </div>
-      <button>voir plus</button>
     </div>
 
     <button class="arrow" id="prev"></button>
@@ -123,20 +119,19 @@
     const prev = document.querySelector('#prev');
     const next = document.querySelector('#next');
     const paginationContainer = document.querySelector('.paginationVal');
-    $('.homeSlide:first-child').addClass('active');
     let index = 0;
     let autoPlayInterval;
 
     function showSlide() {
-      $('.homeSlide').removeClass('active uncover');
-      $('.homeSlide').eq(index).addClass('active uncover');
+      slides.forEach((slide) => slide.classList.remove('active'));
+      slides[index].classList.add('active');
     }
 
     function startAutoPlay() {
       autoPlayInterval = setInterval(() => {
         nextSlide();
         updatePagination();
-      }, 2000);
+      }, 2800);
     }
 
     function stopAutoPlay() {
@@ -210,164 +205,104 @@
 
 <style>
   .slider-container {
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 1200px; /* Vous pouvez ajuster cette valeur selon vos besoins */
-    margin: 0 auto; /* Centre le slider sur la page */
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   #sliderVal {
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 100%;
-    height: 60vw;
-    padding: 20px; /* Ajoutez un padding pour plus d'espace autour du contenu */
     position: relative;
     overflow: hidden;
-    background-color: aqua;
+    /* border: solid 1px red; */
   }
 
   .homeSlide {
-    max-width: 100%;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: bisque;
     display: none;
-    transition: opacity 1s ease-in-out;
-  }
-
-  .homeSlide.uncover {
-    opacity: 0;
-    z-index: 2; /* Pour s'assurer que l'élément actif est au-dessus du précédent */
-  }
-
-  .homeSlide.uncover.active {
-    opacity: 1;
-    z-index: 1; /* Assure que l'élément précédent reste en dessous de l'actuel */
   }
 
   .homeSlide.active {
     display: block;
-    opacity: 1;
-  }
-
-  .homeSlide:first-child {
-    display: block;
-    opacity: 1;
-    transition: none; /* Désactive la transition pour la première diapositive */
   }
 
   .homeSlide img {
     width: 100%;
-    min-height: auto;
+    height: auto;
     object-fit: cover;
+    margin-bottom: -5px;
   }
 
-  .homeSlide button {
-    /* Button SHOP NOW */
-    font-size: 15px;
-    font-weight: 300;
-    color: white;
-    border: 1px solid white;
-    padding: 10px 40px 8px 40px;
+  .block-txt {
     position: absolute;
-    left: 45%;
-    bottom: 45px;
-    background: black;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 80%;
+    /* border: solid 2px rgb(255, 238, 0); */
   }
 
-  .homeSlide button:hover {
-    opacity: 0.8;
-  }
-
-  .block-txt,
-  .rightTxt {
-    font-family: 'Raleway', sans-serif;
-    position: absolute;
-    color: black;
-    top: 35%;
-    right: 10%;
-  }
-
-  .rightTxt h2 {
-    font-size: 45px;
-    font-weight: 500;
-    text-align: end;
-    margin-bottom: -10px;
-  }
-
-  .rightTxt p {
-    font-size: 30px;
+  .block-txt button {
+    font-size: 20px;
     font-weight: 300;
-    text-align: end;
-  }
-
-  .block-txt,
-  .leftTxt {
-    font-family: 'Raleway', sans-serif;
-    position: absolute;
-    color: black;
-    top: 35%;
-    left: 10%;
-  }
-
-  .leftTxt h2 {
-    font-size: 45px;
-    font-weight: 500;
-    margin-bottom: -10px;
-  }
-
-  .leftTxt p {
-    font-size: 30px;
-    font-weight: 300;
-  }
-
-  .block-txt > button {
-    /* Bouton SHOP NOW */
-    font-size: 15px;
-    font-weight: 300;
+    margin-top: 50px;
     text-transform: uppercase;
     color: white;
     border: 1px solid white;
-    padding: 10px 40px 8px 40px;
-    position: absolute;
-    left: 45%;
-    bottom: 45px;
-    background: black;
   }
 
-  .rightVal button:hover {
-    opacity: 0.8;
+  .block-txt > h2 {
+    font-size: 45px;
+    text-align: left;
+    font-weight: 500;
+    font-family: 'Raleway', sans-serif;
+    /* border: solid 1px red; */
+  }
+
+  .block-txt > p {
+    font-size: 30px;
+    text-align: left;
+    font-weight: 300;
+    color: black;
+    font-family: 'Raleway', sans-serif;
+    /* border: solid 1px rgb(0, 0, 255); */
+  }
+
+  .rightTxt > h2 {
+    font-weight: 500;
+    text-align: end;
+  }
+
+  .rightTxt > p {
+    font-weight: 300;
+    text-align: end;
   }
 
   .arrow {
-    /* Button position next/prev */
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 49px;
     height: 49px;
     display: none;
-    z-index: 3; /* Assure que les flèches sont au-dessus des images */
-  }
-
-  .arrow:hover {
-    z-index: 3;
-    opacity: 0.5;
+    background-color: transparent;
+    border: none;
   }
 
   #prev {
-    left: 20px;
+    left: 30px;
     background-image: url('http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/slider-control-prev.png');
     background-color: black;
+    background-size: cover;
   }
 
   #next {
-    right: 20px;
+    right: 30px;
     background-image: url('http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/slider-control-next.png');
     background-color: black;
+    background-size: cover;
+  }
+
+  #sliderVal:hover .arrow {
+    display: block;
   }
 
   .paginationVal {
@@ -376,14 +311,11 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 20px; /* Ajustez la position verticale de la pagination */
-    left: 50%; /* Centre la pagination horizontalement */
-    transform: translateX(-50%);
-    z-index: 3; /* Assure que la pagination est au-dessus des images */
+    bottom: -10px;
+    right: 20px;
   }
 
   .dot {
-    /* pagination bulles */
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -400,23 +332,13 @@
     display: block;
   }
 
-  @media only screen and (max-width: 768px) {
-    /* Styles spécifiques pour les écrans de moins de 768px */
-    .block-txt,
-    .rightTxt,
-    .leftTxt {
-      top: 20%; /* Ajustez la position pour les écrans plus petits */
+  @media screen and (max-width: 768px) {
+    .block-txt {
+      top: 40%;
     }
 
-    .block-txt button,
-    .rightTxt button {
-      left: 40%; /* Ajustez la position du bouton pour les écrans plus petits */
+    .paginationVal {
+      bottom: 10px;
     }
-
-    .leftTxt button {
-      left: 35%; /* Ajustez la position du bouton pour les écrans plus petits */
-    }
-
-    /* Ajoutez d'autres ajustements nécessaires pour les écrans plus petits */
   }
 </style>
