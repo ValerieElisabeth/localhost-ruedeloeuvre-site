@@ -1,3 +1,6 @@
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
 <div id="sliderVal">
   <div class="homeSlide">
     <img
@@ -117,21 +120,20 @@
     const prev = document.querySelector('#prev');
     const next = document.querySelector('#next');
     const paginationContainer = document.querySelector('.paginationVal');
+    $('.homeSlide:first-child').addClass('active');
     let index = 0;
     let autoPlayInterval;
 
     function showSlide() {
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = 'none';
-      }
-      slides[index].style.display = 'block';
+      $('.homeSlide').removeClass('active');
+      $('.homeSlide').eq(index).addClass('active');
     }
 
     function startAutoPlay() {
       autoPlayInterval = setInterval(() => {
         nextSlide();
         updatePagination();
-      }, 6000);
+      }, 2000);
     }
 
     function stopAutoPlay() {
@@ -172,7 +174,7 @@
       stopAutoPlay();
       index = parseInt(e.target.dataset.index);
       showSlide();
-      updatePagination(); // Ajout : mettre à jour les bulles après le clic de l'utilisateur
+      updatePagination();
       startAutoPlay();
     }
 
@@ -190,13 +192,10 @@
 
     function updatePagination() {
       const dots = document.querySelectorAll('.paginationVal .dot');
-      for (let i = 0; i < dots.length; i++) {
-        dots[i].classList.remove('active');
-      }
+      dots.forEach((dot) => dot.classList.remove('active'));
       dots[index].classList.add('active');
     }
 
-    // Ajout : redémarrer l'autoplay après que l'utilisateur a cliqué sur une bulle
     function restartAutoPlay() {
       stopAutoPlay();
       startAutoPlay();
@@ -222,10 +221,18 @@
     top: 0;
     left: 0;
     background-color: bisque;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .homeSlide.active {
+    opacity: 1;
   }
 
   .homeSlide:first-child {
     display: block;
+    opacity: 1;
+    transition: none; /* Désactive la transition pour la première diapositive */
   }
 
   .homeSlide img {
@@ -363,5 +370,56 @@
 
   #sliderVal:hover .arrow {
     display: block;
+  }
+
+  /* RESPONSIVE */
+  /* Tablet Styles */
+  @media screen and (max-width: 768px) {
+    #sliderVal {
+      width: 100%; /* Adjust the width as needed for tablets */
+      height: auto; /* Adjust the height as needed for tablets */
+    }
+
+    .homeSlide img {
+      width: 100%;
+      height: auto;
+    }
+
+    .block-txt,
+    .rightTxt,
+    .leftTxt {
+      top: 20%; /* Adjust the positioning as needed for tablets */
+    }
+
+    .block-txt button,
+    .rightVal button {
+      left: 40%; /* Adjust the button position as needed for tablets */
+      bottom: 20px; /* Adjust the button position as needed for tablets */
+    }
+  }
+
+  /* Mobile Styles */
+  @media screen and (max-width: 480px) {
+    #sliderVal {
+      width: 100%; /* Adjust the width as needed for mobile devices */
+      height: auto; /* Adjust the height as needed for mobile devices */
+    }
+
+    .homeSlide img {
+      width: 100%;
+      height: auto;
+    }
+
+    .block-txt,
+    .rightTxt,
+    .leftTxt {
+      top: 15%; /* Adjust the positioning as needed for mobile devices */
+    }
+
+    .block-txt button,
+    .rightVal button {
+      left: 35%; /* Adjust the button position as needed for mobile devices */
+      bottom: 15px; /* Adjust the button position as needed for mobile devices */
+    }
   }
 </style>
