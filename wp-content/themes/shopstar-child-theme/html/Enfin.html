@@ -1,10 +1,10 @@
 <head>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 
 <section class="slider-container">
   <div id="sliderVal">
-    <div class="homeSlide">
+    <div class="homeSlide slide-transition">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/001.jpg"
         alt="Image 1"
@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="homeSlide">
+    <div class="homeSlide slide-transition">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/002.jpg"
         alt="Image 3"
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <div class="homeSlide">
+    <div class="homeSlide slide-transition">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/003.jpg"
         alt="Image 3"
@@ -39,7 +39,7 @@
         <button>voir plus</button>
       </div>
     </div>
-    <div class="homeSlide">
+    <div class="homeSlide slide-transition">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/004.jpg"
         alt="Image 4"
@@ -50,7 +50,7 @@
         <button>voir plus</button>
       </div>
     </div>
-    <div class="homeSlide">
+    <div class="homeSlide slide-transition">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/005.jpg"
         alt="Image 5"
@@ -61,7 +61,7 @@
         <button>voir plus</button>
       </div>
     </div>
-    <div class="homeSlide">
+    <div class="homeSlide slide-transition">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/006.jpg"
         alt="Image 6"
@@ -72,7 +72,7 @@
         <button>voir plus</button>
       </div>
     </div>
-    <div class="homeSlide">
+    <div class="homeSlide slide-transition">
       <img
         src="http://localhost:8888/free/wp-content/themes/shopstar-child-theme/images/007.jpg"
         alt="Image 7"
@@ -125,14 +125,17 @@
 
     function showSlide() {
       $('.homeSlide').removeClass('active');
-      $('.homeSlide').eq(index).addClass('active');
+      $('.homeSlide')
+        .eq(index)
+        .addClass('active')
+        .css('transform', 'translateX(0)'); // Ajout de la transition de translation
     }
 
     function startAutoPlay() {
       autoPlayInterval = setInterval(() => {
         nextSlide();
         updatePagination();
-      }, 2800);
+      }, 3200);
     }
 
     function stopAutoPlay() {
@@ -140,19 +143,33 @@
     }
 
     function nextSlide() {
-      index++;
-      if (index > slides.length - 1) {
+      if (index < slides.length - 1) {
+        $('.homeSlide').eq(index).css('transform', 'translateX(-100%)');
+        console.log('Transition en cours vers la gauche...'); // Ajoutez cette ligne
+
+        setTimeout(() => {
+          index++;
+          showSlide();
+        }, 500); // Temporisation de 500 millisecondes (ajustez si nécessaire)
+      } else {
         index = 0;
+        showSlide();
       }
-      showSlide();
     }
 
     function prevSlide() {
-      index--;
-      if (index < 0) {
+      if (index > 0) {
+        $('.homeSlide').eq(index).css('transform', 'translateX(100%)');
+        console.log('Transition en cours vers la droite...'); // Ajoutez cette ligne
+
+        setTimeout(() => {
+          index--;
+          showSlide();
+        }, 500); // Temporisation de 500 millisecondes (ajustez si nécessaire)
+      } else {
         index = slides.length - 1;
+        showSlide();
       }
-      showSlide();
     }
 
     next.addEventListener('click', function () {
@@ -219,14 +236,11 @@
   .homeSlide {
     display: none;
     opacity: 0;
-    transition: opacity 0.5s ease, filter 0.5s ease; /* Ajoutez la transition du filtre */
-    filter: blur(5px); /* Réglez la valeur de flou initiale */
   }
 
   .homeSlide.active {
     display: block;
     opacity: 1;
-    filter: blur(0); /* Supprimez le flou pour l'image active */
   }
 
   .homeSlide img {
@@ -316,7 +330,7 @@
   }
 
   .slide-transition {
-    transition: transform 0.5s ease, opacity 0.5s ease, filter 0.5s ease;
+    transition: transform 1s ease, opacity 1s ease, filter 1s ease;
   }
 
   .slide-blur {
@@ -383,6 +397,15 @@
   }
 
   @media screen and (max-width: 460px) {
+    #prev {
+      transform: scale(0.7);
+    }
+
+    #next {
+      transform: scale(0.7);
+      transition: all 0.2s ease 0s;
+    }
+
     .block-txt button {
       font-size: 15px;
     }
